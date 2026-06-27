@@ -1,9 +1,9 @@
 import httpx
 import json
 import os
-from mcp.server.fastmcp import FastMCP
+from fastmcp import FastMCP          # <-- changed from mcp.server.fastmcp
 
-mcp = FastMCP("PowerAutomateMCPServer", stateless_http=True )
+mcp = FastMCP("PowerAutomateMCPServer" )
 
 POWER_AUTOMATE_ENDPOINT = os.environ.get(
     "POWER_AUTOMATE_ENDPOINT",
@@ -44,9 +44,10 @@ async def invoke_power_automate_workflow(payload: dict | None = None) -> str:
     except Exception as e:
         return f"Unexpected error: {e}"
 
-# ASGI app object — used by Uvicorn on Render
-app = mcp.http_app(path="/mcp" )
+# ASGI app — used by Uvicorn on Render
+app = mcp.http_app( )           # fastmcp uses http_app( ) without path arg by default
+application = app              # alias for Azure App Service compatibility
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
-    mcp.run(transport="streamable-http", host="0.0.0.0", port=port, path="/mcp" )
+    mcp.run(transport="http", host="0.0.0.0", port=port )
