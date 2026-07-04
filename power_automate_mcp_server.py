@@ -7,10 +7,7 @@ mcp = FastMCP("PowerAutomateMCPServer" )
 
 POWER_AUTOMATE_ENDPOINT = os.environ.get(
     "POWER_AUTOMATE_ENDPOINT",
-    "https://a8afc1d6d727ef81b23e4ba9d001ea.92.environment.api.powerplatform.com:443"
-    "/powerautomate/automations/direct/workflows/897f276ab8db4974915818329ffe2c49"
-    "/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun"
-    "&sv=1.0&sig=GU2Gfu-6Ex7AZ4J-9eD8tRVAfrGcDmRUgai0GYxlWTQ"
+    "https://e9a5c353a85a4d198de384982869cd.36.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/afad2278ea4d4408afd0d6c37e303d23/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=CTz4JjVgLaKTyDLc5bRLZE9ElLGekgkLP_A5J0i1D-A"
  )
 
 @mcp.tool()
